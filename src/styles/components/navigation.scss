@@ -1,0 +1,30 @@
+@import '../variables';
+
+.navigation {
+	background-color: $dark-pink;
+	color: $light-pink;
+	padding: 15px 0;
+	margin-bottom: 50px;
+
+	&__left {
+		font-size: 20px;
+	}
+
+	&__right {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		font-size: 25px;
+
+		a {
+			color: $light-pink;
+		}
+	}
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+}
