@@ -4,7 +4,7 @@ let modal = document.getElementById('modal');
 let openModalButton = document.getElementById('open-modal-button');
 let closeModalButton = document.getElementById('button-x');
 
-openModalButton.addEventListener('click', openModal);
+openModalButton.addEventListener('click', openAddModal);
 closeModalButton.addEventListener('click', closeModal);
 
 let editingTask = null;
@@ -12,6 +12,11 @@ let editingTask = null;
 const textInputField = document.getElementById('input-task-name');
 const todoList = document.getElementById('todo-list');
 const submitButton = document.getElementById('submit-button');
+
+function openAddModal() {
+	modal.querySelector('h2').innerHTML = "Add Task";
+	openModal();
+}
 
 function openModal() {
 	modal.classList.add('active');
@@ -21,7 +26,6 @@ function closeModal() {
 	modal.classList.remove('active');
 	textInputField.value = '';
 	editingTask = null;
-
 }
 
 submitButton.addEventListener("click", (e) => {
@@ -70,35 +74,30 @@ submitButton.addEventListener("click", (e) => {
 		})
 	}
 
-	const todoStatusElements = document.getElementsByClassName('todo-status');
+	const todoStatusElement = todoItemContainer.querySelector('.todo-status');
 
-	for (let i = 0; i < todoStatusElements.length; i++) {
-		const todoStatusElement = todoStatusElements[i];
+	todoStatusElement.addEventListener('click', () => {
+		const status = todoStatusElement.innerHTML;
 
-		todoStatusElement.addEventListener('click', () => {
-			const status = todoStatusElement.innerHTML;
+		if (status === "To do") {
+			todoStatusElement.innerHTML = "In progress";
+			todoStatusElement.style.color = '#e6cc00';
+		} else if (status === "In progress") {
+			todoStatusElement.innerHTML = "Done";
+			todoStatusElement.style.color = '#8ABD91';
+		} else if (status === "Done") {
+			todoStatusElement.innerHTML = "To do";
+			todoStatusElement.style.color = '#9b5860';
+		}
+	});
 
-			if (status === "To do") {
-				todoStatusElement.innerHTML = "In progress";
-			} else if (status === "In progress") {
-				todoStatusElement.innerHTML = "Done";
-			} else if (status === "Done") {
-				todoStatusElement.innerHTML = "To do";
-			}
-		});
-	}
+	const deleteButton = todoItemContainer.querySelector('.delete-button');
 
-	const deleteButtons = document.getElementsByClassName('delete-button');
+	deleteButton.addEventListener('click', () => {
+		const todoItemContainer = deleteButton.parentElement.parentElement;
 
-	for (let i = 0; i < deleteButtons.length; i++) {
-		const element = deleteButtons[i];
-
-		element.addEventListener('click', () => {
-			const todoItemContainer = element.parentElement.parentElement;
-
-			todoItemContainer.remove();
-		})
-	}
+		todoItemContainer.remove();
+	})
 
 	closeModal();
 });
@@ -106,6 +105,8 @@ submitButton.addEventListener("click", (e) => {
 function editTask(taskName) {
 	editingTask = taskName;
 	textInputField.value = taskName;
+	modal.querySelector('h2').innerHTML = "Edit Task";
+
 
 	openModal();
 }
