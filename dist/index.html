@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+  <title>Todo-list</title>
+<script defer src="index.bundle.js?5e53d7ab8aa8709a5746"></script><link href="style.css?5e53d7ab8aa8709a5746" rel="stylesheet"></head>
+
+<body>
+  <nav class="navigation">
+    <div class="container">
+      <p class="navigation__left">Created by Tijana Maric</p>
+
+      <div class="navigation__right">
+        <a href="https://www.linkedin.com/in/tijana-maric-7-tm/" target="_blank"><i
+            class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/Maricka7" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>To do list</h1>
+    <div class="button-container">
+      <button id="open-modal-button">Add
+        task</button>
+    </div>
+
+    <div class="task-table">
+      <div class="task-table__header">
+        <p class="stall">#</p>
+        <p>Task Name</p>
+        <p>Status</p>
+        <p>Edit / Remove</p>
+      </div>
+      <div id="todo-list">
+
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Made with love by Tijana Maric</p>
+    </div>
+  </footer>
+  <div id="modal" class="modal-container">
+    <div class="modal">
+      <button id="button-x" class="modal__button-x">X</button>
+      <h2>Add task</h2>
+      <form>
+        <label>
+          <p>Text</p>
+          <input autofocus id="input-task-name" type="text">
+        </label>
+        <div>
+          <button id="submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+
+</html>
